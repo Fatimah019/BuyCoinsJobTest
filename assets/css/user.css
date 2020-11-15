@@ -1,0 +1,98 @@
+.header {
+  background: #000;
+  height: 80px;
+  color: #fff;
+}
+.header-menu li a {
+  color: #fff;
+}
+.main {
+  margin-top: 30px;
+}
+#profile-pic {
+  width: 100%;
+  border-radius: 50%;
+}
+
+.profile {
+  width: 30%;
+  padding: 0px 10px;
+}
+.repos {
+  width: 75%;
+}
+.repos div ul li a {
+  margin-right: 25px;
+  color: #000;
+  font-weight: bolder;
+}
+.repo-head {
+  overflow-x: auto;
+  padding: 10px 0px;
+}
+.repo-head ul {
+  padding: 0;
+  margin: 0;
+}
+#find-repo {
+  width: 100%;
+}
+.repo-info {
+  width: 100%;
+}
+
+#repoCount {
+  font-weight: bolder;
+}
+.repo-info-left p {
+  margin-right: 15px;
+}
+
+.star-con {
+  display: flex;
+  align-items: center;
+}
+@media screen and (max-width: 768px) {
+  .profile {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+  }
+  .profile-pic-con {
+    width: 30%;
+  }
+  #profile-pic {
+    width: 50%;
+  }
+  .repos {
+    width: 100%;
+  }
+  /* .repo-info {
+    width: 60%;
+  } */
+}
+/* 
+@media screen and (max-width: 600px) {
+  .repo-info {
+    width: 70%;
+  }
+}
+@media screen and (max-width: 480px) {
+  .repo-info {
+    width: 80%;
+  }
+}
+@media screen and (max-width: 320px) {
+  .repo-info {
+    width: 90%;
+  }
+} */
+
+/* repo contaner */
+.repo-container {
+  display: flex;
+  justify-content: space-between;
+}
+.repo-name {
+  color: rgb(25, 25, 155);
+}

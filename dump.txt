@@ -1,0 +1,34 @@
+        <!-- <hr /> -->
+        <!-- 
+        <div class="user-repos">
+          <div class="repo-info flex" id="user-repos">
+            <div>
+              <h1 class="repo-name" id="repo-name">Repo Name</h1>
+              <div class="flex space-between">
+                <p class="prog-lang">HTML</p>
+                <p><i class="fa fa-star-o"></i> <span>20</span></p>
+                <p><i class="fa fa-code-fork"></i> <span>20</span></p>
+                <p>Updated on <span>date</span></p>
+              </div>
+            </div>
+            <div class="star-con">
+              <button><i class="fa fa-star-o"></i> Star</button>
+            </div>
+          </div>
+          <hr />
+        </div> -->
+
+        <!-- <div class="flex space-between " id="repos-con">
+          <div class="user-repo">
+            <h1 class="repo-name" id="repo-name">Repo Name</h1>
+            <div class="flex repo-info-left">
+              <p class="prog-lang">HTML</p>
+              <p><i class="fa fa-star-o"></i> <span>20</span></p>
+              <p><i class="fa fa-code-fork"></i> <span>20</span></p>
+              <p>Updated on <span>date</span></p>
+            </div>
+          </div>
+          <div class="star-con">
+            <button><i class="fa fa-star-o"></i> Star</button>
+          </div>
+        </div> -->
