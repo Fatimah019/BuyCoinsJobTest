@@ -1,6 +1,5 @@
 const githubUrl = "https://api.github.com/graphql";
-const accessToken = "7d104108b6f2dfa28a1ee369738c86d572d72e56";
-const oauth = { Authorization: "bearer " + accessToken };
+const accessToken = "048d4afc2493ebf50232df7e622c796ac98d3228";
 let displayName = document.getElementById("user-full-name");
 let userName = document.getElementById("githubusername");
 let profilePic = document.getElementById("profile-pic");
