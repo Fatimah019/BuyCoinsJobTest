@@ -12,14 +12,40 @@
     />
   </head>
   <body>
-    <!-- <div class="header v-h-center space-between">
-      <div>
-        <ul class="flex header-menu space-between">
-          <div>logo</div>
-          <input type="search" placeholder="Search or jump to..." />
+    <div class="header v-h-center">
+      <div
+        class="flex container-fluid header-lists space-between"
+        id="header-lists"
+      >
+        <div class="flex align-center bars">
+          <i class="fa fa-bars" id="nav-bar"></i>
+        </div>
+        <div class="flex align-center github-logo-container">
+          <i
+            class="fa fa-github"
+            class="github-logo"
+            style="font-size: 40px;"
+          ></i>
+        </div>
+
+        <ul
+          class="flex header-menu align-center"
+          id="header-menu"
+          style="flex-basis:80%"
+        >
+          <div class="flex align-center">
+            <input
+              type="search"
+              placeholder="Search or jump to..."
+              id="search-repo"
+              class="search-repo-header"
+            />
+          </div>
+
           <li>
             <a href=""><b>Pull requests</b></a>
           </li>
+
           <li>
             <a href=""><b>Issues</b></a>
           </li>
@@ -32,35 +58,51 @@
           <li>
             <a href=""><b>Explore</b></a>
           </li>
+          <li class="flex align-center profile-menu">
+            <img src="" alt="profile-pic" id="profile-pic-menu" />
+            <span id="githubusernamemenu"></span>
+          </li>
         </ul>
+        <div class="flex align-center header-right">
+          <i class="fa fa-bell"></i>
+          <i class="fa fa-plus" id="fa-plus"
+            ><span><i class="fa fa-caret-down"></i></span
+          ></i>
+
+          <div class="flex align-center space-between profile-pic-header">
+            <img src="" alt="profile-pic" id="profile-pic-header" /><i
+              class="fa fa-caret-down"
+            ></i>
+          </div>
+        </div>
       </div>
-      <div>dd</div>
-    </div> -->
+    </div>
+
     <div class="flex-row container-fluid main">
       <div class="profile">
-        <div class="profile-pic-con">
+        <div class="profile-pic-con flex align-center">
           <img src="" alt="profile-pic" id="profile-pic" />
         </div>
-        <div class="align-center">
+        <div class="name-fullname">
           <h2 class="user-full-name" id="user-full-name"></h2>
           <p class="username" id="githubusername"></p>
+          <p class="bio" id="bio"></p>
         </div>
-
-        <!-- <p id="user-profession">
-          Frontend Developer / Machine Learning Enthusiat
-        </p> -->
       </div>
 
       <div class="repos">
         <div class="repo-head">
           <ul class="flex">
-            <li><a href="#">Overview</a></li>
-            <li><a href="#">Repositories</a></li>
-            <li><a href="#">Projects</a></li>
-            <li><a href="#">Packages</a></li>
+            <li><i class="fa fa-book"></i><a href="#">Overview</a></li>
+            <li class="active">
+              <i class="fa fa-book"></i
+              ><a href="#">Repositories <span id="repo-number"></span></a>
+            </li>
+            <li><i class="fa fa-book"></i><a href="#">Projects</a></li>
+            <li><i class="fa fa-book"></i><a href="#">Packages</a></li>
           </ul>
         </div>
-        <hr />
+        <hr style="margin-top:-5px" />
         <!-- find a repo  -->
         <div>
           <form>
@@ -68,11 +110,12 @@
               type="search"
               placeholder="Find a repository..."
               id="find-repo"
+              aria-label="Find a repository..."
             />
           </form>
         </div>
         <hr />
-        <p>
+        <p style="width:40%;">
           <span id="repoCount"></span> results for <b>public</b> repositories
         </p>
 
