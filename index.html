@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="En">
   <head>
-    <title></title>
+    <title>BuyCoins Interview Test</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
     <link href="assets/css/style.css" rel="stylesheet" type="text/css" />
@@ -21,11 +21,32 @@
           <i class="fa fa-bars" id="nav-bar"></i>
         </div>
         <div class="flex align-center github-logo-container">
-          <i
-            class="fa fa-github"
+          <a
             class="github-logo"
-            style="font-size: 40px;"
-          ></i>
+            href="https://github.com/"
+            data-hotkey="g d"
+            aria-label="Homepage "
+            data-ga-click="Header, go to dashboard, icon:logo"
+          >
+            <!-- <svg
+              class="octicon octicon-mark-github v-align-middle github-logo"
+              height="32"
+              viewBox="0 0 16 16"
+              version="1.1"
+              width="32"
+              aria-hidden="true"
+            >
+              <path
+                fill-rule="evenodd"
+                d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"
+              ></path>
+            </svg> -->
+            <i
+              class="fa fa-github"
+              class="github-logo"
+              style="font-size: 40px;"
+            ></i>
+          </a>
         </div>
 
         <ul
@@ -33,47 +54,48 @@
           id="header-menu"
           style="flex-basis:80%"
         >
-          <div class="flex align-center">
+          <form class="flex align-center">
             <input
               type="search"
               placeholder="Search or jump to..."
               id="search-repo"
               class="search-repo-header"
             />
-          </div>
+          </form>
           <li id="dashboard">
-            <a href=""><b>Dashboard</b></a>
+            <a href="">Dashboard</a>
           </li>
           <li>
-            <a href=""><b>Pull requests</b></a>
+            <a href="">Pull requests</a>
           </li>
 
           <li>
-            <a href=""><b>Issues</b></a>
+            <a href="">Issues</a>
           </li>
           <li id="codespaces">
-            <a href=""><b>Codespaces</b></a>
+            <a href="">Codespaces</a>
           </li>
           <li>
-            <a href=""><b>Marketplace</b></a>
+            <a href="">Marketplace</a>
           </li>
           <li>
-            <a href=""><b>Explore</b></a>
+            <a href="">Explore</a>
           </li>
 
           <li class="flex align-center profile-menu">
             <img src="" alt="profile-pic" id="profile-pic-menu" />
-            <span id="githubusernamemenu"></span>
+            <span id="githubusernamemenu" style="margin-left: 5px"></span>
           </li>
           <li id="sign-out">
-            <i class="fa fa-download-right"></i><a href="">Sign Out</a>
+            <i class="fa fa-sign-out"></i><a href="">Sign Out</a>
           </li>
         </ul>
         <div class="flex align-center header-right">
           <i class="fa fa-bell"></i>
-          <i class="fa fa-plus" id="fa-plus"
-            ><span><i class="fa fa-caret-down"></i></span
-          ></i>
+          <div class="flex space-between">
+            <i class="fa fa-plus" id="fa-plus"></i>
+            <i class="fa fa-caret-down"></i>
+          </div>
 
           <div class="flex align-center space-between profile-pic-header">
             <img src="" alt="profile-pic" id="profile-pic-header" /><i
@@ -84,29 +106,86 @@
       </div>
     </div>
 
-    <div class="flex-row container-fluid main">
-      <div class="profile">
+    <div class="flex-row  main">
+      <div class="profile align-center">
         <div class="profile-pic-con flex align-center">
           <img src="" alt="profile-pic" id="profile-pic" />
         </div>
         <div class="name-fullname">
-          <h2 class="user-full-name" id="user-full-name"></h2>
-          <a class="username" id="githubusername"></a>
+          <span class="user-full-name" id="user-full-name"></span><br />
+          <a href="" class="username" id="githubusername"></a>
           <p class="bio bio-desktop" id="bio"></p>
         </div>
       </div>
 
-      <div class="repos container-fluid">
+      <div class="repos">
         <p class="bio bio-mobile" id="bio-mobile"></p>
         <div class="repo-head">
           <ul class="flex">
-            <li><i class="fa fa-book"></i><a href="#">Overview</a></li>
-            <li class="active">
-              <i class="fa fa-book"></i
-              ><a href="#">Repositories <span id="repo-number"></span></a>
+            <li class="flex align-center">
+              <svg
+                class="octicon octicon-book UnderlineNav-octicon hide-sm repo-head-icon"
+                height="16"
+                viewBox="0 0 16 16"
+                version="1.1"
+                width="16"
+                aria-hidden="true"
+              >
+                <path
+                  fill-rule="evenodd"
+                  d="M0 1.75A.75.75 0 01.75 1h4.253c1.227 0 2.317.59 3 1.501A3.744 3.744 0 0111.006 1h4.245a.75.75 0 01.75.75v10.5a.75.75 0 01-.75.75h-4.507a2.25 2.25 0 00-1.591.659l-.622.621a.75.75 0 01-1.06 0l-.622-.621A2.25 2.25 0 005.258 13H.75a.75.75 0 01-.75-.75V1.75zm8.755 3a2.25 2.25 0 012.25-2.25H14.5v9h-3.757c-.71 0-1.4.201-1.992.572l.004-7.322zm-1.504 7.324l.004-5.073-.002-2.253A2.25 2.25 0 005.003 2.5H1.5v9h3.757a3.75 3.75 0 011.994.574z"
+                ></path>
+              </svg>
+              <a href="#">Overview</a>
             </li>
-            <li><i class="fa fa-graph"></i><a href="#">Projects</a></li>
-            <li><i class="fa fa-pyramid"></i><a href="#">Packages</a></li>
+            <li class="active flex align-center">
+              <svg
+                class="octicon octicon-repo UnderlineNav-octicon hide-sm repo-head-icon"
+                height="16"
+                viewBox="0 0 16 16"
+                version="1.1"
+                width="16"
+                aria-hidden="true"
+              >
+                <path
+                  fill-rule="evenodd"
+                  d="M2 2.5A2.5 2.5 0 014.5 0h8.75a.75.75 0 01.75.75v12.5a.75.75 0 01-.75.75h-2.5a.75.75 0 110-1.5h1.75v-2h-8a1 1 0 00-.714 1.7.75.75 0 01-1.072 1.05A2.495 2.495 0 012 11.5v-9zm10.5-1V9h-8c-.356 0-.694.074-1 .208V2.5a1 1 0 011-1h8zM5 12.25v3.25a.25.25 0 00.4.2l1.45-1.087a.25.25 0 01.3 0L8.6 15.7a.25.25 0 00.4-.2v-3.25a.25.25 0 00-.25-.25h-3.5a.25.25 0 00-.25.25z"
+                ></path>
+              </svg>
+              <a href="#">Repositories <span id="repo-number"></span></a>
+            </li>
+            <li class="flex align-center">
+              <svg
+                class="octicon octicon-project UnderlineNav-octicon hide-sm repo-head-icon"
+                height="16"
+                viewBox="0 0 16 16"
+                version="1.1"
+                width="16"
+                aria-hidden="true"
+              >
+                <path
+                  fill-rule="evenodd"
+                  d="M1.75 0A1.75 1.75 0 000 1.75v12.5C0 15.216.784 16 1.75 16h12.5A1.75 1.75 0 0016 14.25V1.75A1.75 1.75 0 0014.25 0H1.75zM1.5 1.75a.25.25 0 01.25-.25h12.5a.25.25 0 01.25.25v12.5a.25.25 0 01-.25.25H1.75a.25.25 0 01-.25-.25V1.75zM11.75 3a.75.75 0 00-.75.75v7.5a.75.75 0 001.5 0v-7.5a.75.75 0 00-.75-.75zm-8.25.75a.75.75 0 011.5 0v5.5a.75.75 0 01-1.5 0v-5.5zM8 3a.75.75 0 00-.75.75v3.5a.75.75 0 001.5 0v-3.5A.75.75 0 008 3z"
+                ></path>
+              </svg>
+              <a href="#">Projects</a>
+            </li>
+            <li class="flex align-center">
+              <svg
+                class="octicon octicon-package UnderlineNav-octicon hide-sm repo-head-icon"
+                height="16"
+                viewBox="0 0 16 16"
+                version="1.1"
+                width="16"
+                aria-hidden="true"
+              >
+                <path
+                  fill-rule="evenodd"
+                  d="M8.878.392a1.75 1.75 0 00-1.756 0l-5.25 3.045A1.75 1.75 0 001 4.951v6.098c0 .624.332 1.2.872 1.514l5.25 3.045a1.75 1.75 0 001.756 0l5.25-3.045c.54-.313.872-.89.872-1.514V4.951c0-.624-.332-1.2-.872-1.514L8.878.392zM7.875 1.69a.25.25 0 01.25 0l4.63 2.685L8 7.133 3.245 4.375l4.63-2.685zM2.5 5.677v5.372c0 .09.047.171.125.216l4.625 2.683V8.432L2.5 5.677zm6.25 8.271l4.625-2.683a.25.25 0 00.125-.216V5.677L8.75 8.432v5.516z"
+                ></path>
+              </svg>
+              <a href="#">Packages</a>
+            </li>
           </ul>
         </div>
         <hr style="margin-top:-5px" />
@@ -121,7 +200,7 @@
             />
           </form>
         </div>
-        <hr />
+        <hr id="hr-a-find-repo" />
         <p class="repocountp">
           <span id="repoCount"></span> results for <b>public</b> repositories
         </p>
@@ -130,6 +209,6 @@
       </div>
     </div>
     <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
-    <script src="assets/js/script.js"></script>
+    <script type="text/javascript" src="assets/js/script.js"></script>
   </body>
 </html>

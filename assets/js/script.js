@@ -1,5 +1,5 @@
 const githubUrl = "https://api.github.com/graphql";
-const accessToken = "48c8cb430f8c3c7799ee3628b6227f5e48873c22";
+const accessToken = myaccessToken;
 let displayName = document.getElementById("user-full-name");
 let userName = document.getElementById("githubusername");
 let profilePic = document.getElementById("profile-pic");
@@ -58,6 +58,7 @@ const options = {
   body: JSON.stringify({ query })
 };
 
+//fetch api data using the fetch function
 fetch(githubUrl, options)
   .then(res => res.json())
   .then(data => {
@@ -93,18 +94,19 @@ fetch(githubUrl, options)
       leftRepoInfo.appendChild(leftRepoCon);
       leftRepoCon.setAttribute("class", "left-repo-con");
       //repo information on the left
-      //create-element for repo name with h2 element
+
+      //create-element for repo name with anchor element
       let repoName = document.createElement("a");
       repoName.setAttribute("class", "repo-name");
       repoName.href = repo.url;
       repoName.textContent = repo.name;
       leftRepoCon.appendChild(repoName);
 
-      //if forked
+      //check if repo is forked
       const ifForked = document.createElement("a");
       ifForked.setAttribute("class", "if-forked");
       if (repo.isFork === true) {
-        ifForked.textContent = `forked from ${repo.name}/${repo.name}`;
+        ifForked.textContent = `forked from ${userinfo.login}/${repo.name}`;
       }
       leftRepoCon.appendChild(ifForked);
 
@@ -121,7 +123,7 @@ fetch(githubUrl, options)
 
       //   primary language
 
-      //color
+      //create element for primary programming language color
       let primaryLanguageColor = repo.primaryLanguage.color;
       const primaryLanguageC = document.createElement("div");
       fSCountContainer.appendChild(primaryLanguageC);
@@ -131,7 +133,7 @@ fetch(githubUrl, options)
       primaryLanguageC.appendChild(primaryLangColor);
       primaryLangColor.style.backgroundColor = primaryLanguageColor;
 
-      //name
+      //create element for primary programming language name
       let primaryLanguageText = repo.primaryLanguage.name;
       const primaryLanguageT = document.createElement("span");
       primaryLanguageC.appendChild(primaryLanguageT);
@@ -147,7 +149,7 @@ fetch(githubUrl, options)
         repoForkCount.style.display = "none";
       }
 
-      //create element for strredcount
+      //create element for starredcount
       const repoStarCount = document.createElement("span");
       fSCountContainer.appendChild(repoStarCount);
       repoStarCount.setAttribute("class", "star-count");
@@ -177,22 +179,10 @@ fetch(githubUrl, options)
       ];
 
       let dateForm = new Date(year);
-      //   let getMins = dateForm.getMinutes();
-      //   let getHrs = dateForm.getHours();
-      //   if (getHrs < 24 && getMins > 60) {
-      //     updatedDate.innerText = `Updated ${getHrs} hours ago}`;
-      //   } else {
 
-      //   }
-      //get days
-      let getDays = dateForm.getDay();
-      if (getDays > 31) {
-        let getMonthn = monthArray[dateForm.getMonth()];
-        updatedDate.innerText = `Updated on ${getMonthn} ${dateForm.getDate()}`;
-      } else if (getDays < 31 && getDays > 0) {
-        updatedDate.innerText = `Updated ${getDays} days ago}`;
-      }
       //get month
+      let getMonthn = monthArray[dateForm.getMonth()];
+      updatedDate.innerText = `Updated on ${getMonthn} ${dateForm.getDate()}`;
 
       //star container
       const starContainer = document.createElement("div");
@@ -200,13 +190,11 @@ fetch(githubUrl, options)
       repoCon.appendChild(starContainer);
 
       //star button
-
       const starCon = document.createElement("button");
       starCon.setAttribute("class", "star-con");
       starCon.textContent = " Star";
-
       starContainer.appendChild(starCon);
-
+      //check for starred repos and change to unstar and the color of the star icon
       if (repo.stargazerCount > 0) {
         starCon.textContent = " " + "Unstar";
         starCon.setAttribute("class", "unstar-con");
@@ -214,6 +202,7 @@ fetch(githubUrl, options)
 
       //   horizontal line
       const hr = document.createElement("hr");
+      hr.style.border = "0.01px solid #e1e4e8";
       repoInfo.appendChild(hr);
     });
   })

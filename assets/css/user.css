@@ -2,6 +2,7 @@ body,
 html {
   font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Helvetica, Arial,
     sans-serif, Apple Color Emoji, Segoe UI Emoji;
+  line-height: 1.5;
 }
 /* header desktop */
 .header {
@@ -18,18 +19,25 @@ html {
 }
 .github-logo {
   font-size: 42px;
+  color: rgb(255, 255, 255);
+  cursor: pointer;
 }
+
 .header-menu {
   flex-basis: 85%;
 }
-#header-menu div,
+#header-menu form,
 #header-menu li {
-  margin-right: 10px;
-  margin-left: 10px;
+  margin-right: 16px;
 }
 .header-menu li a {
-  color: #fff;
+  color: rgba(255, 255, 255);
   white-space: nowrap;
+  font-weight: 600;
+  font-size: 14px;
+}
+.header-menu li a:hover {
+  color: rgba(255, 255, 255, 0.7);
 }
 #sign-out,
 #dashboard {
@@ -39,7 +47,7 @@ html {
 #search-repo {
   color: #fff;
   background: #24292e;
-  width: 90%;
+  width: 100%;
 }
 .search-repo-header {
   color: #fff;
@@ -48,34 +56,43 @@ html {
   background: none;
   border: 0;
   box-shadow: none;
-  border: 0.5px solid#fafbfc;
+  border: 0.2px solid#fafbfc;
   border-radius: 5px;
 }
 .header-right {
   justify-content: space-between;
   flex-basis: 10%;
 }
+.fa-plus {
+  margin-right: 5px;
+}
 #profile-pic-header {
-  width: 30px;
+  width: 20px;
+  height: 20px;
   border-radius: 50%;
 }
 .profile-menu {
   display: none;
 }
-
-/* profile picture , username, name and bio */
 #profile-pic-menu {
-  width: 15px;
+  width: 20px;
+  height: 20px;
   border-radius: 50%;
 }
 
 /* body */
+/* profile picture , username, name and bio */
+
 .main {
-  margin-top: 30px;
+  margin: auto;
+  width: 95%;
+  margin-top: 25px;
 }
 .profile {
-  width: 30%;
-  padding: 0px 10px;
+  flex-basis: 30%;
+  justify-content: flex-start;
+  align-items: center;
+  padding: 0px 20px 0px 0px;
 }
 #profile-pic {
   width: 100%;
@@ -83,34 +100,36 @@ html {
 }
 .user-full-name {
   font-size: 26px;
+  line-height: 1.25;
+  color: #24292e;
 }
 .username {
   font-size: 20px;
+  color: #586069;
 }
 .bio {
-  font-weight: 600;
+  font-size: 16px;
+  color: #24292e;
 }
 .bio-mobile {
   display: none;
 }
 
+/* repo section by the right */
 .repo-head {
   width: 100%;
   overflow-x: auto;
-}
-.repocountp {
-  width: 50%;
-  border-bottom: 0.1px solid #24292e;
-  padding-bottom: 15px;
+  margin-left: -25px;
 }
 .repo-head li {
   padding-bottom: 15px;
   margin-bottom: -12px;
-  white-space: nowrap;
 }
 .repo-head li a {
-  color: #000;
+  color: #24292e;
   margin-right: 20px;
+  font-size: 14px;
+  white-space: nowrap;
 }
 #find-repo {
   padding: 5px 12px;
@@ -121,48 +140,57 @@ html {
   border-radius: 6px;
   outline: none;
   box-shadow: var(--color-shadow-inset);
-  border: 0.1px solid rgb(116, 114, 114);
+  border: 0.15px solid #e1e4e8;
 }
-/* .repos {
-  margin-left: 20px;
-} */
+#hr-a-find-repo {
+  color: #e1e4e8;
+  opacity: 0.4;
+}
+.repos {
+  width: 95%;
+  margin: auto;
+}
+.repocountp {
+  width: 50%;
+  border-bottom: 0.1px solid #e1e4e8;
+  padding-bottom: 15px;
+  font-size: 14px;
+}
 #find-repo:focus {
   border: 0.5 solid #0366d6;
+  outline-color: #0366d6;
+}
+.repo-head-icon {
+  margin: 0px 4px 0px 0px;
+}
+.active {
+  border-bottom: 2.5px solid rgb(247, 10, 10);
 }
 #repoCount {
   font-weight: bold;
 }
-/* repo contaner */
-.repo-container {
-  background: blue;
-  padding: 0;
-  margin: 0;
+/* repo container */
+.repo-container,
+#repo-info {
   width: 100%;
 }
-/* #repo-info {
-  width: 100%;
-} */
 .repo-info div {
   display: flex;
-  justify-content: space-between;
-  padding: 10px 0px;
-  /* background: blue; */
+  padding: 5px 0px;
 }
 .repo-info .left-info {
   align-items: center;
+}
+.left-repo-con {
+  display: flex;
+  flex-direction: column;
 }
 .repo-info .star-container {
   display: flex;
   justify-content: flex-end;
   margin-right: 0;
 }
-.left-repo-con {
-  display: flex;
-  flex-direction: column;
-}
-/* .repo-container .star-container {
-  width: 30%;
-} */
+
 .repo-name {
   color: #0366d6;
   font-size: 20px;
@@ -170,6 +198,7 @@ html {
 }
 .repo-description {
   font-size: 14px;
+  color: #586069;
 }
 #repo-number {
   color: #24292e;
@@ -177,14 +206,10 @@ html {
   padding: 0px 6px;
   border-radius: 15px;
   font-size: 12px;
-}
-.active {
-  border-bottom: 2.5px solid rgb(247, 10, 10);
+  margin: 0px 0px 0px 4px;
 }
 
 .fSCountContainer {
-  /* display: flex;
-  justify-items: flex-start; */
   align-items: center;
   margin: 0;
 }
@@ -196,55 +221,19 @@ html {
   white-space: nowrap;
   margin: 0;
   margin-right: 5px;
-  /* padding: 0; */
+  color: #586069;
 }
 .fSCountContainer div span {
   white-space: nowrap;
 }
-.primary-language {
-  /* display: flex;
-  align-items: center; */
+.primary-language-color-c {
+  display: flex;
+  align-items: center;
 }
 .primary-language-color {
   height: 12px;
   width: 12px;
   border-radius: 50%;
-}
-.fork-count::before {
-  font-family: "FontAwesome";
-  content: "\f126";
-  font-weight: bold;
-}
-.star-count::before {
-  font-family: "FontAwesome";
-  content: "\f006";
-  font-weight: bold;
-}
-.star-con::before {
-  font-family: "FontAwesome";
-  content: "\f006";
-  font-weight: bold;
-}
-
-.unstar-con::before {
-  font-family: "FontAwesome";
-  content: "\f005";
-  opacity: 0.6;
-}
-.star-container {
-  width: 30%;
-  margin: auto;
-  display: flex;
-  white-space: nowrap;
-  background: red;
-}
-.star-con {
-  padding: 3px 12px;
-  font-size: 12px;
-  background: #fafbfc;
-  color: #24292e;
-  border-radius: 5px;
-  border: 0.03px solid #24292e;
 }
 #repo-count {
   font-weight: bolder;
@@ -253,60 +242,96 @@ html {
   font-size: 12px;
   line-height: 25px;
 }
+.fork-count::before {
+  font-family: "FontAwesome";
+  content: "\f126";
+  font-weight: bold;
+}
+.star-container {
+  width: 30%;
+  margin: auto;
+  display: flex;
+  white-space: nowrap;
+  color: #24292e;
+}
+.star-con,
+.unstar-con {
+  padding: 3px 12px;
+  font-size: 12px;
+  background: #fafbfc;
+  color: #24292e;
+  border-radius: 5px;
+  border: 0.03px solid #24292e;
+}
+.star-count::before {
+  font-family: "FontAwesome";
+  content: "\f006";
+  font-weight: bold;
+}
+.unstar-con::before {
+  font-family: "FontAwesome";
+  content: "\f005";
+  opacity: 0.6;
+}
+
 /* medi
 a queries
  */
 @media screen and (max-width: 768px) {
   /* header */
-  .bars {
-    display: flex;
-    font-size: 24px;
-  }
   .header-menu {
     display: none;
-  }
-  .header-menu div {
-    margin: auto;
-    width: 100%;
-  }
-  .header-menu {
     position: absolute;
     top: 78px;
-    width: 100%;
     background: #24292e;
     flex-direction: column;
-    left: 0;
-    right: 0;
     padding-top: 10px;
     padding-bottom: 10px;
     margin: auto;
     margin-top: 0;
     padding-left: 0px;
     justify-content: center;
-  }
-  .header-menu div {
+    left: 0;
+    right: 0;
     width: 100%;
   }
-  .header-menu input {
+  .bars {
+    display: flex;
+    font-size: 24px;
+  }
+  .bars,
+  .github-logo,
+  .header-right {
+    flex-basis: 100%;
+  }
+  .header-menu form {
+    width: 90%;
+    margin: auto;
+  }
+  .header-menu form input {
     width: 100%;
     line-height: 25px;
     font-size: 16px;
     margin-bottom: 16px;
   }
+  .header-menu {
+    margin: auto;
+  }
   .header-menu li {
-    width: 97%;
     border-bottom: 0.001px solid rgba(238, 236, 236, 0.5);
-    padding: 3px 0px;
     line-height: 35px;
+    margin-left: 30px;
+    margin-right: 30px;
   }
   .header-menu li a {
-    line-height: 40px;
+    line-height: 45px;
   }
   #codespaces {
     display: none;
   }
   #sign-out {
     border-bottom: none;
+    display: block;
   }
   #dashboard {
     display: block;
@@ -319,13 +344,14 @@ a queries
   #fa-plus {
     display: none;
   }
-  .bars,
-  .github-logo,
-  .header-right {
-    flex-basis: 100%;
+  .profile-menu {
+    display: flex;
   }
 
   /* body */
+  .main {
+    width: 90%;
+  }
   .profile {
     width: 100%;
     display: flex;
@@ -341,15 +367,12 @@ a queries
   }
   .repos {
     width: 100%;
-    margin-left: 0;
+    margin: auto;
   }
   .bio-desktop {
     display: none;
   }
   .bio-mobile {
-    display: flex;
-  }
-  .profile-menu {
     display: flex;
   }
 }
