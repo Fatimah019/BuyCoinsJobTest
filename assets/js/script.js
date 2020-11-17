@@ -8,6 +8,7 @@ let profilePicMenu = document.getElementById("profile-pic-menu");
 let headerMenu = document.getElementById("header-menu");
 let userNameMenu = document.getElementById("githubusernamemenu");
 let bio = document.getElementById("bio");
+let bioMobiile = document.getElementById("bio-mobile");
 let repoTotalCount = document.getElementById("repoCount");
 let numberRepo = document.getElementById("repo-number");
 //nav bar
@@ -27,7 +28,7 @@ const query = `
       login
       name
       bio
-      repositories(first: 15) {
+      repositories(first: 20) {
           totalCount
           nodes {
               name
@@ -36,7 +37,9 @@ const query = `
               updatedAt
               description
               isFork
+              url
               primaryLanguage{
+                color
                 name
               }
             }
@@ -65,6 +68,7 @@ fetch(githubUrl, options)
     userName.innerHTML = userinfo.login;
     userNameMenu.innerHTML = userinfo.login;
     bio.innerHTML = userinfo.bio;
+    bioMobiile.innerHTML = userinfo.bio;
     profilePic.src = userinfo.avatarUrl;
     profilePicHeader.src = userinfo.avatarUrl;
     profilePicMenu.src = userinfo.avatarUrl;
@@ -74,37 +78,68 @@ fetch(githubUrl, options)
     //display repos
     let repos = userinfo.repositories.nodes;
     repos.forEach(repo => {
+      // create a div for repo container
       const repoCon = document.createElement("div");
       repoCon.setAttribute("class", "repo-container");
+      // repo info container
       const repoInfo = document.getElementById("repo-info");
       repoInfo.appendChild(repoCon);
+
+      const leftRepoInfo = document.createElement("div");
+      leftRepoInfo.setAttribute("class", "left-info");
+      repoCon.appendChild(leftRepoInfo);
+
+      const leftRepoCon = document.createElement("div");
+      leftRepoInfo.appendChild(leftRepoCon);
+      leftRepoCon.setAttribute("class", "left-repo-con");
+      //repo information on the left
       //create-element for repo name with h2 element
-      const repoName = document.createElement("a");
+      let repoName = document.createElement("a");
       repoName.setAttribute("class", "repo-name");
+      repoName.href = repo.url;
       repoName.textContent = repo.name;
-      repoCon.appendChild(repoName);
+      leftRepoCon.appendChild(repoName);
 
       //if forked
-      const ifForked = document.createElement("span");
+      const ifForked = document.createElement("a");
       ifForked.setAttribute("class", "if-forked");
       if (repo.isFork === true) {
         ifForked.textContent = `forked from ${repo.name}/${repo.name}`;
       }
-      repoInfo.appendChild(ifForked);
+      leftRepoCon.appendChild(ifForked);
 
       //create element for repo description
       const repoDescription = document.createElement("p");
       repoDescription.setAttribute("class", "repo-description");
       repoDescription.textContent = repo.description;
-      repoInfo.appendChild(repoDescription);
+      leftRepoCon.appendChild(repoDescription);
 
       //create container for fork count, starrred count
       const fSCountContainer = document.createElement("div");
       fSCountContainer.setAttribute("class", "fSCountContainer");
-      repoInfo.appendChild(fSCountContainer);
+      leftRepoCon.appendChild(fSCountContainer);
+
+      //   primary language
+
+      //color
+      let primaryLanguageColor = repo.primaryLanguage.color;
+      const primaryLanguageC = document.createElement("div");
+      fSCountContainer.appendChild(primaryLanguageC);
+      primaryLanguageC.setAttribute("class", "primary-language-color-c");
+      let primaryLangColor = document.createElement("span");
+      primaryLangColor.setAttribute("class", "primary-language-color");
+      primaryLanguageC.appendChild(primaryLangColor);
+      primaryLangColor.style.backgroundColor = primaryLanguageColor;
+
+      //name
+      let primaryLanguageText = repo.primaryLanguage.name;
+      const primaryLanguageT = document.createElement("span");
+      primaryLanguageC.appendChild(primaryLanguageT);
+      primaryLanguageT.setAttribute("class", "primary-language");
+      primaryLanguageT.innerText = primaryLanguageText;
 
       //create element for fork count
-      const repoForkCount = document.createElement("a");
+      const repoForkCount = document.createElement("span");
       fSCountContainer.appendChild(repoForkCount);
       repoForkCount.setAttribute("class", "fork-count");
       repoForkCount.innerText = ` ${repo.forkCount}`;
@@ -113,7 +148,7 @@ fetch(githubUrl, options)
       }
 
       //create element for strredcount
-      const repoStarCount = document.createElement("p");
+      const repoStarCount = document.createElement("span");
       fSCountContainer.appendChild(repoStarCount);
       repoStarCount.setAttribute("class", "star-count");
       repoStarCount.innerText = ` ${repo.stargazerCount}`;
@@ -122,24 +157,42 @@ fetch(githubUrl, options)
       }
 
       //get date for updated repos
-      //   const updatedRepoDate = () => {
-      //     let d = new Date();
-
-      //     let repodate = repo.updatedAt;
-      //   };
-      //   create element to show updated text
-
-      //   //   primary language
-      //   const primaryLanguage = document.createElement("span");
-      //   fSCountContainer.appendChild(primaryLanguage);
-      //   primaryLanguage.setAttribute("class", "primary-language");
-      //   primaryLanguage.innerText = ` ${repo.primaryLanguage.name}`;
-
-      const date = new Date().getDay();
       const updatedDate = document.createElement("span");
       fSCountContainer.appendChild(updatedDate);
       updatedDate.setAttribute("class", "updatedDate");
-      updatedDate.innerText = `Updated on ${repo.updatedAt}`;
+      let year = repo.updatedAt;
+      let monthArray = [
+        "January",
+        "February",
+        "March",
+        "April",
+        "May",
+        "June",
+        "July",
+        "August",
+        "September",
+        "October",
+        "Novermber",
+        "December"
+      ];
+
+      let dateForm = new Date(year);
+      //   let getMins = dateForm.getMinutes();
+      //   let getHrs = dateForm.getHours();
+      //   if (getHrs < 24 && getMins > 60) {
+      //     updatedDate.innerText = `Updated ${getHrs} hours ago}`;
+      //   } else {
+
+      //   }
+      //get days
+      let getDays = dateForm.getDay();
+      if (getDays > 31) {
+        let getMonthn = monthArray[dateForm.getMonth()];
+        updatedDate.innerText = `Updated on ${getMonthn} ${dateForm.getDate()}`;
+      } else if (getDays < 31 && getDays > 0) {
+        updatedDate.innerText = `Updated ${getDays} days ago}`;
+      }
+      //get month
 
       //star container
       const starContainer = document.createElement("div");
@@ -151,9 +204,15 @@ fetch(githubUrl, options)
       const starCon = document.createElement("button");
       starCon.setAttribute("class", "star-con");
       starCon.textContent = " Star";
-      repoCon.appendChild(starCon);
 
-      //horizontal line
+      starContainer.appendChild(starCon);
+
+      if (repo.stargazerCount > 0) {
+        starCon.textContent = " " + "Unstar";
+        starCon.setAttribute("class", "unstar-con");
+      }
+
+      //   horizontal line
       const hr = document.createElement("hr");
       repoInfo.appendChild(hr);
     });

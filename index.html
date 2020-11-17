@@ -41,7 +41,9 @@
               class="search-repo-header"
             />
           </div>
-
+          <li id="dashboard">
+            <a href=""><b>Dashboard</b></a>
+          </li>
           <li>
             <a href=""><b>Pull requests</b></a>
           </li>
@@ -49,7 +51,7 @@
           <li>
             <a href=""><b>Issues</b></a>
           </li>
-          <li>
+          <li id="codespaces">
             <a href=""><b>Codespaces</b></a>
           </li>
           <li>
@@ -58,9 +60,13 @@
           <li>
             <a href=""><b>Explore</b></a>
           </li>
+
           <li class="flex align-center profile-menu">
             <img src="" alt="profile-pic" id="profile-pic-menu" />
             <span id="githubusernamemenu"></span>
+          </li>
+          <li id="sign-out">
+            <i class="fa fa-download-right"></i><a href="">Sign Out</a>
           </li>
         </ul>
         <div class="flex align-center header-right">
@@ -85,12 +91,13 @@
         </div>
         <div class="name-fullname">
           <h2 class="user-full-name" id="user-full-name"></h2>
-          <p class="username" id="githubusername"></p>
-          <p class="bio" id="bio"></p>
+          <a class="username" id="githubusername"></a>
+          <p class="bio bio-desktop" id="bio"></p>
         </div>
       </div>
 
-      <div class="repos">
+      <div class="repos container-fluid">
+        <p class="bio bio-mobile" id="bio-mobile"></p>
         <div class="repo-head">
           <ul class="flex">
             <li><i class="fa fa-book"></i><a href="#">Overview</a></li>
@@ -98,8 +105,8 @@
               <i class="fa fa-book"></i
               ><a href="#">Repositories <span id="repo-number"></span></a>
             </li>
-            <li><i class="fa fa-book"></i><a href="#">Projects</a></li>
-            <li><i class="fa fa-book"></i><a href="#">Packages</a></li>
+            <li><i class="fa fa-graph"></i><a href="#">Projects</a></li>
+            <li><i class="fa fa-pyramid"></i><a href="#">Packages</a></li>
           </ul>
         </div>
         <hr style="margin-top:-5px" />
@@ -115,13 +122,11 @@
           </form>
         </div>
         <hr />
-        <p style="width:40%;">
+        <p class="repocountp">
           <span id="repoCount"></span> results for <b>public</b> repositories
         </p>
 
-        <div class="repo-container">
-          <div id="repo-info" class="repo-info"></div>
-        </div>
+        <div id="repo-info" class="repo-info"></div>
       </div>
     </div>
     <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
