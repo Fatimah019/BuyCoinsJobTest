@@ -1,6 +1,7 @@
+// github api root endpoint
 const githubUrl = "https://api.github.com/graphql";
-const accessToken = myaccessToken;
-let displayName = document.getElementById("user-full-name");
+const accessToken = "48c8cb430f8c3c7799ee3628b6227f5e48873c22"; //my generated token
+let displayName = document.getElementById("user-full-name"); //get id of user full name
 let userName = document.getElementById("githubusername");
 let profilePic = document.getElementById("profile-pic");
 let profilePicHeader = document.getElementById("profile-pic-header");
@@ -11,6 +12,8 @@ let bio = document.getElementById("bio");
 let bioMobiile = document.getElementById("bio-mobile");
 let repoTotalCount = document.getElementById("repoCount");
 let numberRepo = document.getElementById("repo-number");
+let projectCount = document.getElementById("project-count");
+
 //nav bar
 let navBar = document.getElementById("nav-bar");
 navBar.onclick = () => {
@@ -21,6 +24,7 @@ navBar.onclick = () => {
   }
 };
 
+// query(schema)
 const query = `
   query {
           viewer {
@@ -28,6 +32,9 @@ const query = `
       login
       name
       bio
+      projects {
+        totalCount
+      }
       repositories(first: 20) {
           totalCount
           nodes {
@@ -62,19 +69,28 @@ const options = {
 fetch(githubUrl, options)
   .then(res => res.json())
   .then(data => {
-    console.log(data);
+    // user info
     let userinfo = data.data.viewer;
+    // display user's full name
     displayName.innerHTML = userinfo.name;
-    // bio.innerHTML = userinfo.bio
     userName.innerHTML = userinfo.login;
     userNameMenu.innerHTML = userinfo.login;
+    // bio
     bio.innerHTML = userinfo.bio;
     bioMobiile.innerHTML = userinfo.bio;
+    // profile picture
     profilePic.src = userinfo.avatarUrl;
     profilePicHeader.src = userinfo.avatarUrl;
     profilePicMenu.src = userinfo.avatarUrl;
+    // repo count
     repoTotalCount.innerHTML = userinfo.repositories.totalCount;
     numberRepo.innerHTML = userinfo.repositories.totalCount;
+    // check if number of prjects is < 1
+    if (userinfo.projects.totalCount < 1) {
+      projectCount.style.display = "none";
+    } else {
+      projectCount.innerText = userinfo.projects.totalCount;
+    }
 
     //display repos
     let repos = userinfo.repositories.nodes;

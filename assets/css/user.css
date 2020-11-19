@@ -1,15 +1,25 @@
+* {
+  box-sizing: border-box;
+}
 body,
 html {
+  margin: 0;
+  padding: 0;
   font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Helvetica, Arial,
     sans-serif, Apple Color Emoji, Segoe UI Emoji;
   line-height: 1.5;
 }
+
 /* header desktop */
 .header {
+  z-index: 999;
+  padding: 16px;
+  font-size: 14px;
   background: #24292e;
   height: 80px;
   color: #fff;
 }
+
 .bars {
   display: none;
 }
@@ -22,7 +32,6 @@ html {
   color: rgb(255, 255, 255);
   cursor: pointer;
 }
-
 .header-menu {
   flex-basis: 85%;
 }
@@ -44,28 +53,56 @@ html {
   display: none;
 }
 
-#search-repo {
-  color: #fff;
+.search-repo-header {
   background: #24292e;
   width: 100%;
-}
-.search-repo-header {
-  color: #fff;
-  width: 100%;
   padding: 5px 10px;
-  background: none;
   border: 0;
   box-shadow: none;
   border: 0.2px solid#fafbfc;
   border-radius: 5px;
 }
+#search-repo {
+  color: #fff;
+  background: none;
+  outline: transparent;
+  border: none;
+}
+
+.fa-slash {
+  padding: 5px 6px;
+  background: #343535;
+  border: 1px solid #eaeaec;
+  border-radius: 4px;
+  font-size: 14px;
+}
+
 .header-right {
   justify-content: space-between;
   flex-basis: 10%;
 }
 .fa-plus {
   margin-right: 5px;
+  color: #e1e4e8;
+  outline: #ffffff;
 }
+.mail-status {
+  position: absolute;
+  margin-top: -14px;
+  margin-left: 8px;
+  z-index: 9999;
+  width: 14px;
+  height: 14px;
+  background-image: linear-gradient(#54a3ff, #006eed);
+  background-clip: padding-box;
+  border-radius: 50%;
+}
+.octicon {
+  display: inline-block;
+  vertical-align: text-top;
+  fill: currentColor;
+}
+
 #profile-pic-header {
   width: 20px;
   height: 20px;
@@ -81,27 +118,93 @@ html {
 }
 
 /* body */
+
+/* repo section by the right */
+.repo-head {
+  width: 55%;
+  margin: auto;
+  height: 70px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.repo-head li {
+  padding-bottom: 15px;
+  padding-top: 35px;
+  padding-left: 5px;
+  padding-right: 5px;
+  margin-bottom: -12px;
+  margin-right: 20px;
+  margin-left: 20px;
+}
+.repo-head li a {
+  color: #24292e;
+  font-size: 14px;
+  white-space: nowrap;
+  margin-left: 4px;
+}
+.active {
+  border-bottom: 2px solid #f9826c;
+}
+#repo-number,
+#project-count {
+  color: #24292e;
+  background: #efeff0;
+  padding: 0px 6px;
+  border-radius: 15px;
+  font-size: 12px;
+  margin: 0px 0px 0px 4px;
+}
+#project-count {
+  padding: 0px 6px;
+}
+.hr-back {
+  width: 95%;
+  position: absolute;
+  margin: auto;
+  top: 155px;
+  opacity: 0.3;
+  left: 5px;
+  right: 5px;
+}
 /* profile picture , username, name and bio */
 
 .main {
   margin: auto;
   width: 95%;
-  margin-top: 25px;
+  position: absolute;
+  top: 135px;
+  left: 5px;
+  right: 5px;
 }
 .profile {
   flex-basis: 30%;
   justify-content: flex-start;
   align-items: center;
-  padding: 0px 20px 0px 0px;
+  padding: 0px 25px 0px 0px;
+  z-index: 999;
 }
 #profile-pic {
   width: 100%;
   border-radius: 50% !important;
 }
+.octicon-smile-span {
+  border-radius: 2em;
+  color: #24292e;
+  padding: 6px;
+  font-size: 14px;
+  background: #fff;
+  display: flex;
+  position: absolute;
+  left: 21%;
+  top: 160px;
+}
 .user-full-name {
   font-size: 26px;
   line-height: 1.25;
   color: #24292e;
+  font-weight: 600;
 }
 .username {
   font-size: 20px;
@@ -115,40 +218,24 @@ html {
   display: none;
 }
 
-/* repo section by the right */
-.repo-head {
-  width: 100%;
-  overflow-x: auto;
-  margin-left: -25px;
-}
-.repo-head li {
-  padding-bottom: 15px;
-  margin-bottom: -12px;
-}
-.repo-head li a {
-  color: #24292e;
-  margin-right: 20px;
-  font-size: 14px;
-  white-space: nowrap;
-}
 #find-repo {
   padding: 5px 12px;
   width: 100%;
-  padding: 5px 12px;
   font-size: 14px;
   line-height: 20px;
   border-radius: 6px;
   outline: none;
-  box-shadow: var(--color-shadow-inset);
   border: 0.15px solid #e1e4e8;
 }
 #hr-a-find-repo {
   color: #e1e4e8;
   opacity: 0.4;
 }
+
 .repos {
   width: 95%;
   margin: auto;
+  margin-top: 40px;
 }
 .repocountp {
   width: 50%;
@@ -163,9 +250,7 @@ html {
 .repo-head-icon {
   margin: 0px 4px 0px 0px;
 }
-.active {
-  border-bottom: 2.5px solid rgb(247, 10, 10);
-}
+
 #repoCount {
   font-weight: bold;
 }
@@ -176,7 +261,7 @@ html {
 }
 .repo-info div {
   display: flex;
-  padding: 5px 0px;
+  padding: 4px 0px;
 }
 .repo-info .left-info {
   align-items: center;
@@ -194,19 +279,11 @@ html {
 .repo-name {
   color: #0366d6;
   font-size: 20px;
-  font-weight: bolder;
+  font-weight: 600;
 }
 .repo-description {
   font-size: 14px;
   color: #586069;
-}
-#repo-number {
-  color: #24292e;
-  background: #efeff0;
-  padding: 0px 6px;
-  border-radius: 15px;
-  font-size: 12px;
-  margin: 0px 0px 0px 4px;
 }
 
 .fSCountContainer {
@@ -216,11 +293,10 @@ html {
 .fSCountContainer span,
 .fSCountContainer div {
   display: flex;
-  margin-right: 8px;
   font-size: 12px;
   white-space: nowrap;
   margin: 0;
-  margin-right: 5px;
+  margin-right: 8px;
   color: #586069;
 }
 .fSCountContainer div span {
@@ -242,13 +318,19 @@ html {
   font-size: 12px;
   line-height: 25px;
 }
+.star-count::before {
+  font-family: "FontAwesome";
+  content: "\f006";
+  font-weight: bold;
+  margin-right: 2px;
+}
 .fork-count::before {
   font-family: "FontAwesome";
   content: "\f126";
   font-weight: bold;
+  margin-right: 2px;
 }
 .star-container {
-  width: 30%;
   margin: auto;
   display: flex;
   white-space: nowrap;
@@ -256,27 +338,46 @@ html {
 }
 .star-con,
 .unstar-con {
-  padding: 3px 12px;
-  font-size: 12px;
-  background: #fafbfc;
+  border-radius: 4px;
   color: #24292e;
-  border-radius: 5px;
-  border: 0.03px solid #24292e;
+  background: #fafbfc;
+  padding: 3px 12px;
+  outline: transparent;
+  box-shadow: transparent;
+  border: none;
+  border: 0.033px solid #bbbdbe;
 }
-.star-count::before {
+.star-con::before {
   font-family: "FontAwesome";
   content: "\f006";
   font-weight: bold;
+  margin-right: 4px;
 }
 .unstar-con::before {
   font-family: "FontAwesome";
   content: "\f005";
-  opacity: 0.6;
+  font-weight: bold;
 }
 
-/* medi
-a queries
- */
+/* media queries*/
+@media screen and (max-width: 1100px) {
+  .octicon-smile-span {
+    left: 20%;
+    top: 130px;
+  }
+}
+@media screen and (max-width: 1024px) {
+  .repo-head ul {
+    width: 100%;
+    left: 0;
+    right: 0;
+  }
+}
+@media screen and (max-width: 900px) {
+  .octicon-smile-span {
+    left: 19%;
+  }
+}
 @media screen and (max-width: 768px) {
   /* header */
   .header-menu {
@@ -285,14 +386,11 @@ a queries
     top: 78px;
     background: #24292e;
     flex-direction: column;
-    padding-top: 10px;
-    padding-bottom: 10px;
     margin: auto;
-    margin-top: 0;
-    padding-left: 0px;
+    padding: 10px 0px 10px 0px;
     justify-content: center;
-    left: 0;
-    right: 0;
+    left: 0px;
+    right: 0px;
     width: 100%;
   }
   .bars {
@@ -304,24 +402,53 @@ a queries
   .header-right {
     flex-basis: 100%;
   }
-  .header-menu form {
-    width: 90%;
-    margin: auto;
+  .mail-status {
+    margin-top: -18px;
+    margin-left: 16px;
   }
-  .header-menu form input {
+  .header-menu form {
+    width: 95%;
+    margin: auto;
+    margin-right: 2.5%;
+    margin-left: 2.5%;
+  }
+  .header-menu form label {
     width: 100%;
     line-height: 25px;
     font-size: 16px;
     margin-bottom: 16px;
+    display: table-cell;
+    width: 100%;
+    padding-top: 2px;
+    padding-bottom: 2px;
+    font-size: inherit;
+    color: inherit;
+    display: flex;
+    justify-content: space-between;
+  }
+  .header-menu form label input {
+    flex-basis: 80%;
+  }
+  .header-menu form label:focus {
+    border-color: #0366d6;
+  }
+
+  .octicon-smile-span {
+    display: none;
   }
   .header-menu {
     margin: auto;
+    z-index: 9999;
+    width: 100%;
+    margin-right: 0;
+    margin-left: 0%;
   }
   .header-menu li {
     border-bottom: 0.001px solid rgba(238, 236, 236, 0.5);
     line-height: 35px;
-    margin-left: 30px;
-    margin-right: 30px;
+    margin-right: 2.5%;
+    margin-left: 2.5%;
+    width: 95%;
   }
   .header-menu li a {
     line-height: 45px;
@@ -347,14 +474,47 @@ a queries
   .profile-menu {
     display: flex;
   }
-
+  .profile-menu span {
+    margin-left: 5px;
+    font-size: 12px;
+    font-weight: bold;
+    color: #fff;
+  }
   /* body */
-  .main {
+  .repo-head {
+    position: absolute;
+    top: 245px;
+    width: 100%;
+    height: 150px;
+    flex-direction: column;
+    padding-left: 5px;
+    padding-right: 5px;
+  }
+  .repo-head p {
     width: 90%;
+    margin-bottom: -20px;
+  }
+  .repo-head ul {
+    padding-left: 0;
+    margin-left: 0;
+    overflow-x: auto;
+    border-bottom: 0.03px solid #24292e;
+    padding-bottom: 12px;
+    width: 100%;
+  }
+  .hr-back {
+    display: none;
+  }
+
+  .main {
+    width: 95%;
+    position: relative;
   }
   .profile {
+    position: absolute;
     width: 100%;
     display: flex;
+    top: -120px;
   }
   .profile-pic-con {
     width: 30%;
@@ -368,6 +528,8 @@ a queries
   .repos {
     width: 100%;
     margin: auto;
+    margin-top: 170px;
+    margin-left: -5px;
   }
   .bio-desktop {
     display: none;
@@ -378,16 +540,38 @@ a queries
 }
 
 @media screen and (max-width: 600px) {
+  .repo-head {
+    top: 220px;
+  }
+  .repos {
+    margin-top: 135px;
+  }
   .repocountp {
     width: 65%;
   }
 }
 @media screen and (max-width: 480px) {
+  .repo-head {
+    margin-top: -100px;
+    position: relative;
+    overflow: auto;
+  }
+  .profile {
+    top: -155px;
+    position: relative;
+  }
+  .repos {
+    margin-top: -20px;
+    position: relative;
+  }
   .repocountp {
     width: 85%;
   }
 }
 @media screen and (max-width: 320px) {
+  .repos {
+    margin-top: 130px;
+  }
   .repocountp {
     width: 95%;
   }
